@@ -1,0 +1,59 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "WinPE10 and Microsoft iSCSI Initiator\n\n\n \n\n\n1- Download Windows Adk\n\n\nDownload Windows Assessment and Deployment Kit (Windows ADK) beased on your Windows 10 Version \n\n\n\n\n \n\n\n2- Run AdkSetup.exe\n\n\nSpecify your instalition location \n\n\n\n\n \n\n\n3- Run Command Prompt\n\n\nRight click on \"Deployment and Imaging Tools Environment\" and run as administrator\n\n\n\n\n \n\n\n4- Creat a WinPe drive\n\n\nCreate a working copy of the Windows PE files. Specify either x86, amd64, or arm:\n\n \n \n\n\ncopype amd64 C:\\winpe10\n\n\n\n \n\n\n5- Mount boot.wim\n\n\n\n5-1- Create folder \"mount\" on the root of C drive\n\n\n5-2- Use the following DISM commands to mount the boot.wim:\n\n \n\n\n    DISM /Mount-Wim /WimFile:C:\\winpe10\\media\\sources\\boot.wim /Index:1 /MountDir:C:\\Mount\n\n\n\n \n\n\n6- Copy required files\n\n\nCopy the following files from your computer to the corresponding folder of the mounted Windows Imaging Format (WIM):\n\n \n\n\n\\windows\\System32\n\niscsicli.exe\niscsicpl.dll\niscsicpl.exe\niscsidsc.dll\niscsied.dll\niscsiexe.dll\niscsium.dll\niscsiwmi.dll\n\n\n\n \n\n\n\\windows\\System32\\Drivers\n\nmsiscsi.sys\n\n\n\n \n\n\n\\windows\\System32\\en-US\n\niscsicpl.dll.mui \niscsicpl.exe.mui \niscsidsc.dll.mui \niscsiexe.dll.mui\n\n\n\n \n\n\n7- Make startnet.cmd\n\n\nCopy following commands to the \"c:\\mount\\windows\\system32\\startnet.cmd\" \n \n\n\nwpeinit \nwpeutil WaitForNetwork \nwpeutil WaitForRemovableStorage \nc:\\setup.exe\n\n\n\n \n\n\n8- Unmount boot.wim\n\n\nUse the following DISM command to unmount the Boot.wim:  \n\n\nDISM /Unmount-Wim /MountDir:C:\\Mount\\BootWIM /Commit\n\n\n\n\n\n9- Make ISO file\n\n\nUse the following Command to make a ISO file: \n\n\nMakeWinPEMedia /ISO C:\\winpe10 c:\\winpe.iso", 
+            "title": "Home"
+        }, 
+        {
+            "location": "/#winpe10-and-microsoft-iscsi-initiator", 
+            "text": "", 
+            "title": "WinPE10 and Microsoft iSCSI Initiator"
+        }, 
+        {
+            "location": "/#1-download-windows-adk", 
+            "text": "Download Windows Assessment and Deployment Kit (Windows ADK) beased on your Windows 10 Version", 
+            "title": "1- Download Windows Adk"
+        }, 
+        {
+            "location": "/#2-run-adksetupexe", 
+            "text": "Specify your instalition location", 
+            "title": "2- Run AdkSetup.exe"
+        }, 
+        {
+            "location": "/#3-run-command-prompt", 
+            "text": "Right click on \"Deployment and Imaging Tools Environment\" and run as administrator", 
+            "title": "3- Run Command Prompt"
+        }, 
+        {
+            "location": "/#4-creat-a-winpe-drive", 
+            "text": "Create a working copy of the Windows PE files. Specify either x86, amd64, or arm:      copype amd64 C:\\winpe10", 
+            "title": "4- Creat a WinPe drive"
+        }, 
+        {
+            "location": "/#5-mount-bootwim", 
+            "text": "5-1- Create folder \"mount\" on the root of C drive \n5-2- Use the following DISM commands to mount the boot.wim:        DISM /Mount-Wim /WimFile:C:\\winpe10\\media\\sources\\boot.wim /Index:1 /MountDir:C:\\Mount", 
+            "title": "5- Mount boot.wim"
+        }, 
+        {
+            "location": "/#6-copy-required-files", 
+            "text": "Copy the following files from your computer to the corresponding folder of the mounted Windows Imaging Format (WIM):    \\windows\\System32\n\niscsicli.exe\niscsicpl.dll\niscsicpl.exe\niscsidsc.dll\niscsied.dll\niscsiexe.dll\niscsium.dll\niscsiwmi.dll     \\windows\\System32\\Drivers\n\nmsiscsi.sys     \\windows\\System32\\en-US\n\niscsicpl.dll.mui \niscsicpl.exe.mui \niscsidsc.dll.mui \niscsiexe.dll.mui", 
+            "title": "6- Copy required files"
+        }, 
+        {
+            "location": "/#7-make-startnetcmd", 
+            "text": "Copy following commands to the \"c:\\mount\\windows\\system32\\startnet.cmd\"     wpeinit \nwpeutil WaitForNetwork \nwpeutil WaitForRemovableStorage \nc:\\setup.exe", 
+            "title": "7- Make startnet.cmd"
+        }, 
+        {
+            "location": "/#8-unmount-bootwim", 
+            "text": "Use the following DISM command to unmount the Boot.wim:    DISM /Unmount-Wim /MountDir:C:\\Mount\\BootWIM /Commit", 
+            "title": "8- Unmount boot.wim"
+        }, 
+        {
+            "location": "/#9-make-iso-file", 
+            "text": "Use the following Command to make a ISO file:   MakeWinPEMedia /ISO C:\\winpe10 c:\\winpe.iso", 
+            "title": "9- Make ISO file"
+        }
+    ]
+}
